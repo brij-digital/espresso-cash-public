@@ -29,5 +29,5 @@ dev_dependencies:
   json_serializable: ^6.0.0
   jsonrpc_client:
     path: ../jsonrpc_client
-  mews_pedantic: ^0.38.0
+  mews_pedantic: ">=0.38.0 <0.43.0"
   test: ^1.17.11
