@@ -23,7 +23,7 @@ dependencies:
   dio: ^5.4.0
   dio_cache_interceptor: ^3.4.2
   dio_cache_interceptor_db_store: ^5.1.0
-  drift: ^2.15.0
+  drift: ^2.30.1
   ec_client_dart:
     path: ../espressocash_client
   ethereum_addresses: ^1.0.2
