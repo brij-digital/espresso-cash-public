@@ -34,7 +34,7 @@ class RampTextField extends StatelessWidget {
                 height: 36.h,
               )
             : _defaultLogo,
-      CryptoCurrency(:final Token token) => TokenIcon(token: token, size: 40.w),
+      CryptoCurrency(:final token) => TokenIcon(token: token, size: 40.w),
       _ => _defaultLogo,
     };
 

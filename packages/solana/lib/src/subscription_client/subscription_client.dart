@@ -179,8 +179,8 @@ class SubscriptionClient {
 
     controller.onListen = () {
       int? subscriptionId;
-      var subscribeRequestSent = false;
-      var subscriptionCancelled = false;
+      bool subscribeRequestSent = false;
+      bool subscriptionCancelled = false;
       final requestId = _requestId++;
 
       final StreamSubscription<dynamic> subscription = _stream.listen(

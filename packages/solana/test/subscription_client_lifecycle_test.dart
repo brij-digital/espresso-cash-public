@@ -18,10 +18,9 @@ void main() {
 
       final socket = await WebSocketTransformer.upgrade(request);
       socket.listen((dynamic message) {
-        if (!subscribeRequest.isCompleted) {
-          subscribeRequest.complete(_decodeRequest(message));
-          unawaited(socket.close());
-        }
+        if (subscribeRequest.isCompleted) return;
+        subscribeRequest.complete(_decodeRequest(message));
+        unawaited(socket.close());
       });
     });
     addTearDown(() => server.close(force: true));

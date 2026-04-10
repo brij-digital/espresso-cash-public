@@ -23,7 +23,7 @@ analyzer:
     deprecated_member_use: ignore
     deprecated_member_use_from_same_package: ignore
     require_trailing_commas: ignore
-    
+
 dart_code_metrics:
   rules:
     avoid-nested-assignments: false
@@ -58,8 +58,10 @@ dart_code_metrics:
     avoid-returning-cascades: false
     prefer-abstract-final-static-class: false
     prefer-boolean-prefixes: false
+    prefer-conditional-expressions: false
     prefer-correct-handler-name: false
     prefer-named-parameters: false
+    prefer-returning-conditional-expressions: false
     prefer-static-method: false
 
   rules-exclude:

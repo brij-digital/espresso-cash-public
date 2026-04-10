@@ -26,10 +26,8 @@ class ConversionRatesRepository {
        _ecClient = ecClient,
        _jupiterClient = jupiterClient;
 
-  // ignore: dispose-class-fields, false positive
   final MyDatabase _db;
   final JupiterPriceClient _jupiterClient;
-  // ignore: dispose-class-fields, false positive
   final EspressoCashClient _ecClient;
   final AsyncCache<void> _cache = AsyncCache(const Duration(minutes: 1));
 

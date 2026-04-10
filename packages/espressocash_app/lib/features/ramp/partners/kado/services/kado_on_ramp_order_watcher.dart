@@ -18,7 +18,6 @@ import '../data/kado_api_client.dart';
 class KadoOnRampOrderWatcher implements RampWatcher {
   KadoOnRampOrderWatcher(this._db, this._client, this._analytics);
 
-  // ignore: dispose-class-fields, false positive
   final MyDatabase _db;
   final KadoApiClient _client;
   final AnalyticsManager _analytics;
