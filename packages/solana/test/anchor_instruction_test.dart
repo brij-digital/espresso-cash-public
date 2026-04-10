@@ -1,4 +1,8 @@
 // @dart=3.9
+
+@TestOn('vm')
+library;
+
 import 'dart:io';
 
 import 'package:solana/anchor.dart';

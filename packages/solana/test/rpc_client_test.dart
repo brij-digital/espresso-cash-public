@@ -1,6 +1,9 @@
 // @dart=3.9
 // ignore_for_file: cast_nullable_to_non_nullable, avoid-unnecessary-late, avoid-type-casts
 
+@TestOn('vm')
+library;
+
 import 'dart:async';
 
 import 'package:bip39/bip39.dart';

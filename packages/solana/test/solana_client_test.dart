@@ -1,6 +1,9 @@
 // @dart=3.9
 // ignore_for_file: avoid-unnecessary-late, avoid-type-casts
 
+@TestOn('vm')
+library;
+
 import 'package:solana/dto.dart';
 import 'package:solana/solana.dart';
 import 'package:test/test.dart';
