@@ -74,10 +74,10 @@ class _State extends State<CpTimeline> with SingleTickerProviderStateMixin {
         _AnimationTransformer? connectorTransformer;
 
         final isActive = index == widget.active;
-        final isHighlighted = widget.animated && index == widget.active;
+        final isHighlighted = widget.animated && isActive;
 
         if (widget.animated) {
-          if (index == widget.active) {
+          if (isActive) {
             indicatorTransformer = _lowerIndicatorTransformer;
           } else if (index == widget.active - 1) {
             connectorTransformer = _connectorTransformer;

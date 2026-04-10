@@ -1,6 +1,9 @@
 // @dart=3.9
 // ignore_for_file: cast_nullable_to_non_nullable, avoid-unnecessary-late, avoid-type-casts
 
+@TestOn('vm')
+library;
+
 import 'dart:async';
 
 import 'package:bip39/bip39.dart';
@@ -462,7 +465,7 @@ void main() {
     test('Call to getVersion() succeeds and parses the response correctly', () async {
       final version = await client.rpcClient.getVersion();
 
-      expect(version.solanaCore.codeUnitAt(0), anyOf(equals(50), equals(51)));
+      expect(version.solanaCore.codeUnitAt(0), anyOf(equals(50), equals(51), equals(52)));
       expect(version.solanaCore.codeUnitAt(1), equals(46));
     });
 

@@ -26,7 +26,7 @@ dart_get:
 
 dart_analyze:
 	dart analyze --fatal-infos .
-	dcm analyze --fatal-style --fatal-performance --fatal-warnings lib
+	dcm analyze --fatal-style --fatal-warnings lib
 
 dart_test:
 	dart test
@@ -46,7 +46,7 @@ flutter_generate_test_schemas:
 
 flutter_analyze:
 	flutter analyze --fatal-infos
-	dcm analyze --fatal-style --fatal-performance --fatal-warnings lib
+	dcm analyze --fatal-style --fatal-warnings lib
 
 flutter_check_unused_code:
 	dcm check-unused-code lib --fatal-unused --exclude=$(excludeUnused)

@@ -20,7 +20,6 @@ import '../data/coinflow_api_client.dart';
 class CoinflowOffRampOrderWatcher implements RampWatcher {
   CoinflowOffRampOrderWatcher(this._db, this._client, this._account, this._analytics);
 
-  // ignore: dispose-class-fields, false positive
   final MyDatabase _db;
   final CoinflowClient _client;
   final ECWallet _account;

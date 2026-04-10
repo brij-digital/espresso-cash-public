@@ -6,7 +6,6 @@ import '../../../gen/assets.gen.dart';
 import '../../../ui/colors.dart';
 import '../../../ui/text_field.dart';
 import '../../currency/models/currency.dart';
-import '../../tokens/token.dart';
 import '../../tokens/widgets/token_icon.dart';
 import 'ramp_loader.dart';
 
@@ -34,7 +33,7 @@ class RampTextField extends StatelessWidget {
                 height: 36.h,
               )
             : _defaultLogo,
-      CryptoCurrency(:final Token token) => TokenIcon(token: token, size: 40.w),
+      CryptoCurrency(:final token) => TokenIcon(token: token, size: 40.w),
       _ => _defaultLogo,
     };
 

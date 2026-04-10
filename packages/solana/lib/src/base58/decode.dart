@@ -1,4 +1,3 @@
-// @dart=3.9
 import 'dart:convert';
 
 part 'reverse_map.dart';

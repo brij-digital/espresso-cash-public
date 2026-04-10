@@ -1,6 +1,9 @@
 // @dart=3.9
 // ignore_for_file: avoid-future-ignore
 
+@TestOn('vm')
+library;
+
 import 'dart:async';
 
 import 'package:solana/dto.dart';

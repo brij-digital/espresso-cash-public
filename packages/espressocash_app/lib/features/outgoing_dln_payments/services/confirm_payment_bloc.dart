@@ -39,7 +39,6 @@ class ConfirmPaymentBloc extends Bloc<_Event, _State> {
   }
 
   final QuoteRepository _quoteRepository;
-  // ignore: dispose-class-fields, false positive
   final TokenBalancesRepository _balancesRepository;
 
   Timer? _timer;

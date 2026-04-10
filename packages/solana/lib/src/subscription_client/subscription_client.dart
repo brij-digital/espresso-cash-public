@@ -15,18 +15,21 @@ import 'package:solana/src/subscription_client/notification_message.dart';
 import 'package:solana/src/subscription_client/optional_error.dart';
 import 'package:solana/src/subscription_client/subscribed_message.dart';
 import 'package:solana/src/subscription_client/subscription_client_exception.dart';
-import 'package:web_socket_channel/io.dart';
+import 'package:solana/src/subscription_client/web_socket_channel_factory.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 /// Provides a websocket based connection to Solana.
 class SubscriptionClient {
+  /// [pingInterval] and [connectTimeout] are honored on IO platforms.
+  /// On web they are accepted for API compatibility and ignored.
   SubscriptionClient(Uri uri, {Duration? pingInterval, Duration? connectTimeout}) {
-    final channel = IOWebSocketChannel.connect(
+    final channel = createWebSocketChannel(
       uri,
       pingInterval: pingInterval,
       connectTimeout: connectTimeout,
     );
-    _sink = channel.sink;
+    _channel = channel;
+    _channelReady = channel.ready;
     _stream = channel.stream.asBroadcastStream();
   }
 
@@ -155,13 +158,14 @@ class SubscriptionClient {
 
   /// Dispose this object and cancel any existing subscription.
   void close() {
-    _sink.close();
     _isClosed = true;
+    _channel.sink.close();
   }
 
   static int _requestId = 1;
 
-  late final WebSocketSink _sink;
+  late final WebSocketChannel _channel;
+  late final Future<void> _channelReady;
   late final Stream<dynamic> _stream;
 
   bool _isClosed = false;
@@ -175,6 +179,8 @@ class SubscriptionClient {
 
     controller.onListen = () {
       int? subscriptionId;
+      bool subscribeRequestSent = false;
+      bool subscriptionCancelled = false;
       final requestId = _requestId++;
 
       final StreamSubscription<dynamic> subscription = _stream.listen(
@@ -201,16 +207,26 @@ class SubscriptionClient {
         onDone: controller.close,
       );
 
-      controller.onCancel = () {
-        subscription.cancel();
+      unawaited(
+        _channelReady.then((_) {
+          if (_isClosed || subscriptionCancelled) return;
+
+          subscribeRequestSent = true;
+          _sendRequest(requestId, '${method}Subscribe', params);
+        }, onError: (_, _) {}),
+      );
+
+      controller.onCancel = () async {
+        subscriptionCancelled = true;
+        await subscription.cancel();
+
+        if (!subscribeRequestSent) return;
 
         final id = subscriptionId;
         if (id == null) return;
 
         _sendRequest(_requestId++, '${method}Unsubscribe', <int>[id]);
       };
-
-      _sendRequest(requestId, '${method}Subscribe', params);
     };
 
     return controller.stream;
@@ -240,6 +256,6 @@ class SubscriptionClient {
       if (params != null) 'params': params,
     });
 
-    _sink.add(payload);
+    _channel.sink.add(payload);
   }
 }
