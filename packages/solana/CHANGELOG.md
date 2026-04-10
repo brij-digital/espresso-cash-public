@@ -1,3 +1,7 @@
+## 0.32.0+1
+
+ - **FIX**(solana): support SubscriptionClient on web.
+
 ## 0.32.0
 
 > Note: This release has breaking changes.
