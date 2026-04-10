@@ -6,7 +6,6 @@ import '../../../gen/assets.gen.dart';
 import '../../../ui/colors.dart';
 import '../../../ui/text_field.dart';
 import '../../currency/models/currency.dart';
-import '../../tokens/token.dart';
 import '../../tokens/widgets/token_icon.dart';
 import 'ramp_loader.dart';
 
