@@ -12,6 +12,8 @@ env:
   FLUTTER_VERSION: "3.38.3"
   DART_VERSION: "3.10.1"
   DCM_VERSION: "1.35.0"
+  DCM_CI_KEY: ${{ secrets.DCM_CI_KEY }}
+  DCM_EMAIL: ${{ vars.DCM_EMAIL }}
 
 jobs:
   formatting:
