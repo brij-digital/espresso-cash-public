@@ -1,0 +1,27 @@
+{
+  "version": "0.1.0",
+  "name": "multi_type_program",
+  "instructions": [
+    {
+      "name": "place_bet",
+      "accounts": [
+        { "name": "player", "isMut": true, "isSigner": true }
+      ],
+      "args": [
+        { "name": "amount", "type": "u64" },
+        { "name": "memo",   "type": "string" },
+        { "name": "won",    "type": "bool" }
+      ]
+    },
+    {
+      "name": "update_config",
+      "accounts": [
+        { "name": "admin", "isMut": true, "isSigner": true }
+      ],
+      "args": [
+        { "name": "minBet", "type": "u64" },
+        { "name": "note",   "type": "string" }
+      ]
+    }
+  ]
+}
