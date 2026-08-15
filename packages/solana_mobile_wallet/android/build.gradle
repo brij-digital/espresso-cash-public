@@ -26,6 +26,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 36
+    namespace "com.solana.solana_mobile_wallet"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
